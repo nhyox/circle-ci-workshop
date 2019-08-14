@@ -2,7 +2,7 @@ version: 2.0
 jobs:
   dockerize:
     machine: true
-    steps:  
+    steps:
       - attach_workspace:
           at: .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -28,7 +28,6 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
-      - checkout
       - attach_workspace: 
           at: .
       - run:
