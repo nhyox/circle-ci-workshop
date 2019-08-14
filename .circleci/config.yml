@@ -11,9 +11,9 @@ jobs:
             gradle test
       - run:
           command:
-	    gradle jar
+            gradle jar
       - store_artifacts:
-	  path: /build/libs
-	  destination: prefix            
+          path: /build/libs
+          destination: prefix            
       - store_test_results:
           path: build/test-results
