@@ -45,10 +45,10 @@ workflows:
   somethingwork:
     jobs:
       - test
-      - package
+      - package:
           requires:
             - test
-      - dockerize
+      - dockerize:
           requires:
             - package
 
