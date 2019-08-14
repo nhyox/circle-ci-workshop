@@ -1,14 +1,5 @@
 version: 2.0
 jobs:
-  dockerize:
-    machine: true
-    steps:
-      - attach_workspace:
-          at: .
-      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker build -t nhyox/myapp:$CIRCLE_SHA1 .
-      - run: docker push nhyox/myapp:$CIRCLE_SHA1
-
   test:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -36,17 +27,29 @@ jobs:
             gradle jar
       - store_artifacts:
           path: build/libs
-          destination: prefix
+          destination: build
       - persist_to_workspace:
           root: .
           paths:
-            - .
+            - build/libs
+  dockerize:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t nhyox/myapp:$CIRCLE_SHA1 .
+      - run: docker push nhyox/myapp:$CIRCLE_SHA1
 workflows:
   version: 2
   somethingwork:
     jobs:
-      - package
       - test
+      - package
+          requires:
+            - test
       - dockerize
+          requires:
+            - package
 
         
