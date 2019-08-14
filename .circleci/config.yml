@@ -1,12 +1,12 @@
 version: 2.0
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
       - run:
-          name: The First Step
+          name: test
           command: 
             gradle test          
       - store_test_results:
