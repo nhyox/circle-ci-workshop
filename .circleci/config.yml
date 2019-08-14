@@ -26,7 +26,7 @@ workflows:
   version: 2
   two_job_flow:
     jobs:
-      -test
-      -package:
+      -job-1
+      -job-2:
         requires:
-          -test            
+          -job-1            
