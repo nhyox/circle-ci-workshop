@@ -1,6 +1,7 @@
 workflows:
   version: 2.0
   jobs:
+    job-1:
     test:
       docker:
         - image: circleci/openjdk:8-jdk
@@ -12,6 +13,7 @@ workflows:
               gradle test          
         - store_test_results:
             path: build/test-results
+    job-2:        
     package:
       docker:
         - image: circleci/openjdk:8-jdk
