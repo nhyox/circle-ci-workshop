@@ -34,5 +34,5 @@ workflows:
         paths:
           - .
     - attach_workspace:
-        at: /tmp/workspace
+        at: tmp/workspace
         
