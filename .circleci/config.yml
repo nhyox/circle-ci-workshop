@@ -11,7 +11,7 @@ version: 2.0
               gradle test          
         - store_test_results:
             path: build/test-results                 
-  - package:
+    package:
       docker:
         - image: circleci/openjdk:8-jdk
       steps:
