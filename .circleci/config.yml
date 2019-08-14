@@ -29,6 +29,10 @@ jobs:
       - store_artifacts:
           path: build/libs
           destination: prefix
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
 workflows:
   version: 2
   two_job_flow:
