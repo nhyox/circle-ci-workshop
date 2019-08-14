@@ -30,7 +30,7 @@ workflows:
       - test
       - package
     - persist_to_workspace:
-        root: test
+        root: package
         paths:
           - .
     - attach_workspace:
