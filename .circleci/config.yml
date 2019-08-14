@@ -1,5 +1,14 @@
 version: 2.0
 jobs:
+  dockerize:
+    machine: true
+    steps:  
+      - attach_workspace:
+          at: .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t nhyox/myapp:$CIRCLE_SHA1 .
+      - run: docker push nhyox/myapp:$CIRCLE_SHA1
+
   test:
     docker:
       - image: circleci/openjdk:8-jdk
