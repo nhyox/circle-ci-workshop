@@ -28,6 +28,5 @@ workflows:
     jobs:
       - test
       - package
-        requires:
-          -test
+        
         
