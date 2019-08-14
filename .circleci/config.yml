@@ -29,5 +29,10 @@ workflows:
     jobs:
       - test
       - package
-        
+    -persist_to_workspace:
+        root: test
+        paths:
+          - .
+    - attach_workspace:
+        at: /tmp/workspace
         
